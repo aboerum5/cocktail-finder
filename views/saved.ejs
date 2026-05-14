@@ -15,6 +15,11 @@
   <main class="container">
     <div class="top-links">
       <a href="/">Search Cocktails</a>
+      <% if (savedCocktails && savedCocktails.length > 0) { %>
+        <form action="/cocktails/saved/clear" method="POST" style="display:inline;">
+          <button type="submit" class="clear-button">Clear All</button>
+        </form>
+      <% } %>
     </div>
 
     <% if (!savedCocktails || savedCocktails.length === 0) { %>

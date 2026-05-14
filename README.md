@@ -21,7 +21,7 @@ The app uses TheCocktailDB API to retrieve cocktail data based on the ingredient
 kbhati@terpmail.umd.edu
 
 ## Deployed App Link
-[Deployed App](PASTE_RENDER_LINK_HERE)
+[Deployed App](https://cocktail-finder-h93a.onrender.com/)
 
 ## AI Use
 1. ChatGPT, 2. Claude Code

@@ -52,6 +52,17 @@ router.post("/save", async (req, res) => {
   }
 });
 
+// Clear all saved cocktails
+router.post("/saved/clear", async (req, res) => {
+  try {
+    await Cocktail.deleteMany({});
+    res.redirect("/cocktails/saved");
+  } catch (error) {
+    console.log(error);
+    res.status(500).send("Error clearing saved cocktails.");
+  }
+});
+
 // Show saved cocktails from MongoDB
 router.get("/saved", async (req, res) => {
   try {
