@@ -58,18 +58,21 @@
 
             <h2><%= cocktail.strDrink %></h2>
 
-            <form action="/cocktails/save" method="POST">
-                <input type="hidden" name="drinkId" value="<%= cocktail.idDrink %>">
-                <input type="hidden" name="name" value="<%= cocktail.strDrink %>">
-                <input type="hidden" name="image" value="<%= cocktail.strDrinkThumb %>">
-                <input type="hidden" name="searchedIngredient" value="<%= ingredient %>">
-              
-                <button type="submit">Save Cocktail</button>
-            </form>
+            <button onclick="saveCocktail(this, '<%= cocktail.idDrink %>', '<%= cocktail.strDrink.replace(/'/g, "\\'") %>', '<%= cocktail.strDrinkThumb %>', '<%= ingredient %>')">Save Cocktail</button>
           </div>
         <% }); %>
       </section>
     <% } %>
   </main>
+  <script>
+    function saveCocktail(btn, drinkId, name, image, ingredient) {
+      const params = new URLSearchParams({ drinkId, name, image, searchedIngredient: ingredient });
+      fetch('/cocktails/save', { method: 'POST', headers: { 'Content-Type': 'application/x-www-form-urlencoded' }, body: params })
+        .then(function() {
+          btn.textContent = 'Saved!';
+          btn.disabled = true;
+        });
+    }
+  </script>
 </body>
 </html>
