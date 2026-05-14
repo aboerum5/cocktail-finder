@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Cocktail Results</title>
+  <link rel="stylesheet" href="/styles.css">
+</head>
+
+<body>
+  <header>
+    <h1>Cocktail Finder</h1>
+    <p>Results for: <strong><%= ingredient %></strong></p>
+  </header>
+
+  <main class="container">
+    <div class="top-links">
+      <a href="/">Search Again</a>
+      <a href="/cocktails/saved">View Saved Cocktails</a>
+    </div>
+
+    <% if (!cocktails || cocktails.length === 0) { %>
+      <section class="card">
+        <h2>No cocktails found</h2>
+        <p>Try searching for another ingredient like vodka, gin, rum, tequila, or whiskey.</p>
+      </section>
+    <% } else { %>
+      <section class="results-grid">
+        <% cocktails.forEach(function(cocktail) { %>
+          <div class="cocktail-card">
+            <img 
+              src="<%= cocktail.strDrinkThumb %>" 
+              alt="<%= cocktail.strDrink %>"
+            >
+
+            <h2><%= cocktail.strDrink %></h2>
+
+            <form action="/cocktails/save" method="POST">
+                <input type="hidden" name="drinkId" value="<%= cocktail.idDrink %>">
+                <input type="hidden" name="name" value="<%= cocktail.strDrink %>">
+                <input type="hidden" name="image" value="<%= cocktail.strDrinkThumb %>">
+                <input type="hidden" name="searchedIngredient" value="<%= ingredient %>">
+              
+                <button type="submit">Save Cocktail</button>
+            </form>
+          </div>
+        <% }); %>
+      </section>
+    <% } %>
+  </main>
+</body>
+</html>

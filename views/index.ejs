@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Cocktail Finder</title>
+  <link rel="stylesheet" href="/styles.css">
+</head>
+
+<body>
+  <header>
+    <h1>Cocktail Finder</h1>
+    <p>Enter a liquor or ingredient to find a cocktail idea.</p>
+  </header>
+
+  <main class="container">
+    <section class="card">
+      <h2>Find Cocktail</h2>
+
+      <form action="/cocktails/search" method="POST">
+        <label for="ingredient">Choose a liquor or ingredient:</label>
+      
+        <select id="ingredient" name="ingredient" required>
+          <option value="">-- Select one --</option>
+          <option value="Vodka">Vodka</option>
+          <option value="Gin">Gin</option>
+          <option value="Rum">Rum</option>
+          <option value="Tequila">Tequila</option>
+          <option value="Whiskey">Whiskey</option>
+          <option value="Bourbon">Bourbon</option>
+          <option value="Champagne">Champagne</option>
+          <option value="Amaretto">Amaretto</option>
+          <option value="Kahlua">Kahlua</option>
+          <option value="Cranberry juice">Cranberry Juice</option>
+          <option value="Coca-Cola">Coca-Cola</option>
+          <option value="Coffee">Coffee</option>
+          <option value="Grenadine">Grenadine</option>
+          <option value="Triple sec">Triple Sec</option>
+          <option value="Lime juice">Lime Juice</option>
+        </select>
+      
+        <button type="submit">Find Cocktails</button>
+      </form>
+
+      <a class="link-button" href="/cocktails/saved">View Saved Cocktails</a>
+    </section>
+  </main>
+</body>
+</html>

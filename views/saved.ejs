@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Saved Cocktails</title>
+  <link rel="stylesheet" href="/styles.css">
+</head>
+
+<body>
+  <header>
+    <h1>Saved Cocktails</h1>
+    <p>Your saved cocktail ideas are listed below.</p>
+  </header>
+
+  <main class="container">
+    <div class="top-links">
+      <a href="/">Search Cocktails</a>
+    </div>
+
+    <% if (!savedCocktails || savedCocktails.length === 0) { %>
+      <section class="card">
+        <h2>No saved cocktails yet</h2>
+        <p>Search for an ingredient and save cocktails you like.</p>
+      </section>
+    <% } else { %>
+      <section class="results-grid">
+        <% savedCocktails.forEach(function(cocktail) { %>
+          <div class="cocktail-card">
+            <img 
+              src="<%= cocktail.image %>" 
+              alt="<%= cocktail.name %>"
+            >
+
+            <h2><%= cocktail.name %></h2>
+
+            <p>
+              Found from search:
+              <strong><%= cocktail.searchedIngredient %></strong>
+            </p>
+          </div>
+        <% }); %>
+      </section>
+    <% } %>
+  </main>
+</body>
+</html>
