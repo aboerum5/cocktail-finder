@@ -14,9 +14,33 @@
 
   <main class="container">
     <div class="top-links">
-      <a href="/">Search Again</a>
       <a href="/cocktails/saved">View Saved Cocktails</a>
     </div>
+
+    <section class="card search-inline">
+      <form action="/cocktails/search" method="POST">
+        <label for="ingredient">Search a different ingredient:</label>
+        <select id="ingredient" name="ingredient" required>
+          <option value="">-- Select one --</option>
+          <option value="Vodka" <%= ingredient === 'Vodka' ? 'selected' : '' %>>Vodka</option>
+          <option value="Gin" <%= ingredient === 'Gin' ? 'selected' : '' %>>Gin</option>
+          <option value="Rum" <%= ingredient === 'Rum' ? 'selected' : '' %>>Rum</option>
+          <option value="Tequila" <%= ingredient === 'Tequila' ? 'selected' : '' %>>Tequila</option>
+          <option value="Whiskey" <%= ingredient === 'Whiskey' ? 'selected' : '' %>>Whiskey</option>
+          <option value="Bourbon" <%= ingredient === 'Bourbon' ? 'selected' : '' %>>Bourbon</option>
+          <option value="Champagne" <%= ingredient === 'Champagne' ? 'selected' : '' %>>Champagne</option>
+          <option value="Amaretto" <%= ingredient === 'Amaretto' ? 'selected' : '' %>>Amaretto</option>
+          <option value="Kahlua" <%= ingredient === 'Kahlua' ? 'selected' : '' %>>Kahlua</option>
+          <option value="Cranberry juice" <%= ingredient === 'Cranberry juice' ? 'selected' : '' %>>Cranberry Juice</option>
+          <option value="Coca-Cola" <%= ingredient === 'Coca-Cola' ? 'selected' : '' %>>Coca-Cola</option>
+          <option value="Coffee" <%= ingredient === 'Coffee' ? 'selected' : '' %>>Coffee</option>
+          <option value="Grenadine" <%= ingredient === 'Grenadine' ? 'selected' : '' %>>Grenadine</option>
+          <option value="Triple sec" <%= ingredient === 'Triple sec' ? 'selected' : '' %>>Triple Sec</option>
+          <option value="Lime juice" <%= ingredient === 'Lime juice' ? 'selected' : '' %>>Lime Juice</option>
+        </select>
+        <button type="submit">Find Cocktails</button>
+      </form>
+    </section>
 
     <% if (!cocktails || cocktails.length === 0) { %>
       <section class="card">
