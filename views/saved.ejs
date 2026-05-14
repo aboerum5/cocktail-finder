@@ -22,6 +22,19 @@
       <% } %>
     </div>
 
+    <% if (savedCocktails && savedCocktails.length > 0) { %>
+      <% const uniqueIngredients = [...new Set(savedCocktails.map(c => c.searchedIngredient))]; %>
+      <section class="card filter-bar">
+        <label for="filter">Filter by ingredient:</label>
+        <select id="filter" onchange="filterCocktails(this.value)">
+          <option value="all">All</option>
+          <% uniqueIngredients.forEach(function(ing) { %>
+            <option value="<%= ing %>"><%= ing %></option>
+          <% }); %>
+        </select>
+      </section>
+    <% } %>
+
     <% if (!savedCocktails || savedCocktails.length === 0) { %>
       <section class="card">
         <h2>No saved cocktails yet</h2>
@@ -30,7 +43,7 @@
     <% } else { %>
       <section class="results-grid">
         <% savedCocktails.forEach(function(cocktail) { %>
-          <div class="cocktail-card">
+          <div class="cocktail-card" data-ingredient="<%= cocktail.searchedIngredient %>">
             <img 
               src="<%= cocktail.image %>" 
               alt="<%= cocktail.name %>"
@@ -47,5 +60,12 @@
       </section>
     <% } %>
   </main>
+  <script>
+    function filterCocktails(ingredient) {
+      document.querySelectorAll('.cocktail-card').forEach(function(card) {
+        card.style.display = (ingredient === 'all' || card.dataset.ingredient === ingredient) ? '' : 'none';
+      });
+    }
+  </script>
 </body>
 </html>
