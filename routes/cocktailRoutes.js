@@ -17,7 +17,7 @@ router.post("/search", async (req, res) => {
     const response = await fetch(apiUrl);
     const data = await response.json();
 
-    const cocktails = data.drinks || [];
+    const cocktails = (data.drinks || []).sort(() => Math.random() - 0.5);
 
     res.render("results", {
       ingredient: ingredient,
